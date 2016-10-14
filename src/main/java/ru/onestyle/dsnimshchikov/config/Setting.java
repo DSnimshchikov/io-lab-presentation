@@ -2,6 +2,8 @@ package ru.onestyle.dsnimshchikov.config;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -17,7 +19,8 @@ public class Setting {
     static {
         prop = new Properties();
         try {
-            prop.load(Thread.class.getClassLoader().getResourceAsStream("config.properties"));
+//            Thread.class.getClassLoader().getResourceAsStream("config.properties") //различные варианты доступа к файлу
+            prop.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             log.error("!!!  Not loaded file config.properties");
         }
